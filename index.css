@@ -1,39 +1,75 @@
 body {
    padding: 1rem;
+   background-color: #02C39A;
 } 
 
-section>div {
-    width: 80%;
-    margin: 1rem auto;
+section {
+  padding: auto;
+}
+
+#form {
+  width: 60%; 
+  margin-left: 30%;
+}
+
+#songForm {
+  width: 60%;
+  padding: auto;
+}
+
+#submit {
+  margin-left: 35%;
+}
+
+#submitButton {
+  background-color: #028090;
 }
 
 ul {
     list-style-type: none;
 }
 
+#list {
+  width: 60%;
+  margin-left: 18%;
+}
+
 li {
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding-left: 8px;
     padding-right: 8px;
-    border-style: solid;
-    border-width: 1px;
+    border: 1px solid #05668D;
+    color: white;
     height: 50px;
-    width: 90%;
+    width: 100%;
+}
+
+input {
+    width: 20px;
+}
+
+.button {
+  margin-left: 10%;
 }
 
 .buttons {
     float: right;
     margin: 0 auto;
-    height: 50px;
-    width: 30%;
-
+    height: 100%;
+    width: 21%;
 }
 
 .like {
     float: left;
+    height: 100%;
+    background-color: #028090;
 }
 
 .delete {
     float: right;
+    height: 100%;
+    background-color: #028090;
 }
 
 h1 {

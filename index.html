@@ -10,27 +10,50 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <h1>My Song List</h1>
         <section>
-            <div>
+            <div id = "form">
                 <form id="songForm">
-                    <p>
-                        <label for="songTitle">Title:</label>
-                        <input type="text" name="songTitle">
-                    </p>
-                    <p>
-                        <label for="songArtist">Artist:</label>
-                        <input type="text" name="songArtist">
-                    </p>
-                    <p>
-                        <button type="submit">Add to List</button>
-                    </p>
+                        <div class="row">
+                            <div class="large-6 columns">
+                                <div class="row collapse prefix-radius">
+                                    <div class="small-3 columns">
+                                        <span class="prefix"><label for="songTitle">Title</label></span>
+                                    </div>
+                                    <div class="small-9 columns">
+                                         <input type="text" name="songTitle">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="large-6 columns">
+                                <div class="row collapse prefix-radius">
+                                    <div class="small-3 columns">
+                                        <span class="prefix"><label for="songArtist">Artist</label></span>
+                                    </div>
+                                    <div class="small-9 columns">
+                                         <input type="text" name="songArtist">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- <p>
+                            <label for="songTitle">Title:</label>
+                            <input type="text" name="songTitle">
+                        </p>
+                        <p>
+                            <label for="songArtist">Artist:</label>
+                            <input type="text" name="songArtist">
+                        </p>-->
+                        <p id="submit">
+                            <button id="submitButton" type="submit" class="button large">Add to List</button>
+                        </p>
                 </form>
             </div>
-            <div>
+            <div id="list">
                 <ul id="songList">
 
                 </ul>

@@ -16,10 +16,10 @@ function like(event) {
     console.log('Like');
     const button = event.target;
     if(button.textContent == 'Like') {
-        button.parentElement.parentElement.style.backgroundColor = 'yellow';
+        button.parentElement.parentElement.style.backgroundColor = '#F0F3BD';
         button.textContent = 'Unlike';
     } else {
-        button.parentElement.parentElement.style.backgroundColor = 'white';
+        button.parentElement.parentElement.style.backgroundColor = '#02C39A';
         button.textContent = 'Like';
     }
 }
@@ -44,8 +44,10 @@ function deleteItem(event) {
 }
 
 function addEventListeners() {
+    console.log('Event listeners');
      for(let i = 0; i <= id; i++) {
         if(document.querySelector('#l'+i) != null) {
+            console.log('Added EVent listeners');
             document.querySelector('#l'+i).addEventListener('click', like);
             document.querySelector('#i'+i).addEventListener('click', showDetails);
             document.querySelector('#d'+i).addEventListener('click', deleteItem);
@@ -59,8 +61,8 @@ function addToList(item) {
         <li id="${'i'+id}"> 
             ${item.title} - ${item.artist}
             <div class="buttons">  
-                <button type="button" id="${'l'+id}" class="like">Like</button>
-                <button type="button" id="${'d'+id}" class="delete">Delete</button>
+                <button type="button" id="${'l'+id}" class="like button">Like</button>
+                <button type="button" id="${'d'+id}" class="delete button">Delete</button>         
             </div>
         </li>
         ${list.innerHTML} 
