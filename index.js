@@ -8,14 +8,13 @@ function handleSubmit(event) {
     const songInfo = {
         title: form.songTitle.value, 
         artist: form.songArtist.value,
-        id: '',
     };
     addToList(songInfo);
 }
 
 function like(event) {
-    const button = event.target;
     console.log('Like');
+    const button = event.target;
     if(button.textContent == 'Like') {
         button.parentElement.style.backgroundColor = 'yellow';
         button.textContent = 'Unlike';
@@ -26,27 +25,47 @@ function like(event) {
 }
 
 function showDetails(event) {
-    console.log('Show Details');
-    const listItem = event.target;
+    if(event.target == event.currentTarget) {
+        console.log('Show Details');
+        const listItem = event.target;
+    }
+}
+
+function deleteItem(event) {
+    console.log('Delete!');
+    const listItem = event.target.parentElement;
+    for(let i = 0; i < songList.length; i++) {
+        if(songList[i].id == listItem.id[1]) {
+            console.log(`Removed ${songList[i].title}`);
+            songList.splice(i, 1);
+        }
+    }
+    listItem.parentElement.removeChild(listItem);
 }
 
 function addToList(item) {
     const list = document.querySelector('#songList');
     list.innerHTML = `
-        <li> 
+        <li id="${'i'+id}"> 
             ${item.title} - ${item.artist}  
             <button type="button" id="${'l'+id}">Like</button>
+            <button type="button" id="${'d'+id}">Delete</button>
         </li>
         ${list.innerHTML} 
     `;
-    const button = document.querySelector('#l'+id);
-    const listItem = document.querySelector('#l'+id).parentElement;
-    button.addEventListener('click', like);
-    listItem.addEventListener('click', showDetails)
-    item.id = 'l'+id;
-    songList.push(item);
+
+    for(let i = 0; i <= id; i++) {
+        if(document.querySelector('#l'+i) != null) {
+            document.querySelector('#l'+i).addEventListener('click', like);
+            document.querySelector('#i'+i).addEventListener('click', showDetails);
+            document.querySelector('#d'+i).addEventListener('click', deleteItem);
+        }
+    }
+
+   
+    item.id = id;
+    songList.push(item)
     id++;
 }
-
 
 songForm.addEventListener('submit', handleSubmit);
