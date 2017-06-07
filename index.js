@@ -16,10 +16,10 @@ function like(event) {
     console.log('Like');
     const button = event.target;
     if(button.textContent == 'Like') {
-        button.parentElement.style.backgroundColor = 'yellow';
+        button.parentElement.parentElement.style.backgroundColor = 'yellow';
         button.textContent = 'Unlike';
     } else {
-        button.parentElement.style.backgroundColor = 'white';
+        button.parentElement.parentElement.style.backgroundColor = 'white';
         button.textContent = 'Like';
     }
 }
@@ -33,7 +33,7 @@ function showDetails(event) {
 
 function deleteItem(event) {
     console.log('Delete!');
-    const listItem = event.target.parentElement;
+    const listItem = event.target.parentElement.parentElement;
     for(let i = 0; i < songList.length; i++) {
         if(songList[i].id == listItem.id[1]) {
             console.log(`Removed ${songList[i].title}`);
@@ -43,28 +43,31 @@ function deleteItem(event) {
     listItem.parentElement.removeChild(listItem);
 }
 
-function addToList(item) {
-    const list = document.querySelector('#songList');
-    list.innerHTML = `
-        <li id="${'i'+id}"> 
-            ${item.title} - ${item.artist}  
-            <button type="button" id="${'l'+id}">Like</button>
-            <button type="button" id="${'d'+id}">Delete</button>
-        </li>
-        ${list.innerHTML} 
-    `;
-
-    for(let i = 0; i <= id; i++) {
+function addEventListeners() {
+     for(let i = 0; i <= id; i++) {
         if(document.querySelector('#l'+i) != null) {
             document.querySelector('#l'+i).addEventListener('click', like);
             document.querySelector('#i'+i).addEventListener('click', showDetails);
             document.querySelector('#d'+i).addEventListener('click', deleteItem);
         }
     }
+}
 
-   
+function addToList(item) {
+    const list = document.querySelector('#songList');
+    list.innerHTML = `
+        <li id="${'i'+id}"> 
+            ${item.title} - ${item.artist}
+            <div class="buttons">  
+                <button type="button" id="${'l'+id}" class="like">Like</button>
+                <button type="button" id="${'d'+id}" class="delete">Delete</button>
+            </div>
+        </li>
+        ${list.innerHTML} 
+    `;
+    addEventListeners(); 
     item.id = id;
-    songList.push(item)
+    songList.push(item);
     id++;
 }
 
