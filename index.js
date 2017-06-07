@@ -9,6 +9,9 @@ function handleSubmit(event) {
         title: form.songTitle.value, 
         artist: form.songArtist.value,
     };
+    form.songTitle.value = '';
+    form.songArtist.value = '';
+    form.songTitle.focus();
     addToList(songInfo);
 }
 
